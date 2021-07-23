@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+<mapper namespace="user">	
+	
+	
+	
+	<select id="getUserByID" parameterType="java.lang.String" resultType="com.hs.app.user.vo.UserInfo">
+		select 
+			userIdx, userEmail, userPassword 
+		from
+			hs_admin 
+		where 
+			userEmail = #{id}
+	</select>
+	
+	<select id="getUserByIdx" parameterType="java.lang.Integer" resultType="com.hs.app.user.vo.UserInfo">
+		select 
+			userIdx, userEmail
+		from
+			hs_admin 
+		where 
+			userIdx = #{userIdx}
+	</select>
+	
+	
+	<update id="updateUser" parameterType="java.util.Map">
+		update hs_admin set userEmail = #{userEmail}, userPassword = #{userPassword}
+	</update>
+
+
+</mapper>

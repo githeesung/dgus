@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+/* 전체 */
+* {margin: 0; padding: 0; box-sizing: border-box;}
+html, body {background-color: #fff; color: #000; height: 100%; min-height: 100%; overflow-x: hidden;}
+a {display: inherit; font-size: inherit; color: inherit; outline: none; border: none; align-items: center;}
+
+/* 커스터마이징 */
+.flex {display: flex;}
+.flex-center {display: flex; justify-content: center; align-items: center;}
+.flex-between {display: flex; justify-content: space-between; align-items: center;}
+
+/* 오버레이 */
+#overlay {position: absolute; visibility: hidden; top: 270px; bottom: 0; left: 0; right: 0; width: 100%; min-height: calc(100% - 270px); z-index: 100; opacity: 0; overflow: hidden; background-color: #000; -webkit-transition: all 0.2s; -moz-transition: all 0.2s; transition: all 0.2s;}
+#overlay.full {top: 0;}
+#overlay.active {visibility: visible; opacity: 0.65;}
+
+.btn-primary {background-color: #3e3e3e; border: solid 1px #3e3e3e; border-radius: 4px; text-align: center; cursor: pointer; color: #ffffff; padding: 12px 0;}
+.btn-primary a {display: inline-block; width: 100%;}
+.btn-secondary {background-color: #b6b6b6; border: solid 1px rgba(0, 0, 0, 0.12); border-radius: 5px; text-align: center; cursor: pointer; padding: 8px 0; color: #ffffff;}
+.btn-done {background-color: #fdecc9; border: solid 1px rgba(0, 0, 0, 0.12); border-radius: 5px; text-align: center; cursor: pointer;}
+.btn-done a {display: inline-block; padding: 12px 0; font-weight: bold;}
+.outline {box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04);}
+
+/* 라인 제한 */
+.l1 {display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.l2 {width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+
+/* 커스텀 라디오버튼 */
+.radio {display: flex; justify-content: space-between; margin-top: 20px;}
+.radio .p1 {font-weight: bold; padding-left: 10px;}
+.radio .btn-toggleChildren {position: relative; width: 38px; height: 20px; background-color: #fff; border-radius: 15px; border: 1px solid #ddd; cursor: pointer;}
+.radio .btn-toggleChildren .ef {position: absolute; top: 50%; left: 2px; transform: translateY(-50%); display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-image: linear-gradient(45deg, #3e3e3e, #4a5765); transition: all 0.5s;}
+.radio .btn-toggleChildren .ef.active {left: auto; right: 5px;}
+
+/* 인풋박스 스타일링 */
+/* input {display: inline-block; width: 100%; background-color: #fff; border: 1px solid #bce0fd; border-radius: 0; text-align: left; padding: 13px; color: #3e3e3e;}
+input:focus {outline: none; border-color: #8d6d4a;} */
+
+/* 검색박스 스타일링 */
+/* .search {display: flex; width: 100%; height: 48px; border: 1px solid #bce0fd; border-radius: 6px; padding-right: 10px; background-color: #fff;}
+.search a {display: inline-flex; align-items: center; height: 100%; background-color: #fff; padding-left: 10px; border-radius: 6px 0 0 6px;}
+.search a i {font-size: 18px;}
+.search input {border: none; width: 100%; border-radius: 6px;} */
+
+/* 체크박스 스타일링 */
+/* .form-checkbox {position: relative; display: inline-flex; width: 100%;}
+.form-checkbox:after {display: block; clear: both; content: '';}
+.form-checkbox > input {}
+.form-checkbox > input[type="checkbox"] {display: none;}
+.form-checkbox > input[type="checkbox"] + label {display: inline-flex; align-items: center; width: 15px; height: 15px; background: #fff; border-radius: 3px; border: 1px solid #e6e6e6; cursor: pointer; border-radius: 3px;}
+.form-checkbox > input[type="checkbox"]:checked + label {background: url(../img/icon-check.png) center center no-repeat; background-size: cover;}
+.form-checkbox > label {}
+.form-checkbox > input[type="checkbox"] + label > span {position: absolute; left: 25px; display: block;} */
+
+/* 셀렉트박스 스타일링 */
+.slt-item {position: relative; width: 100%; height: 48px; padding: 13px; overflow: hidden; background: url('../img/down-arrow.png') 95% center no-repeat; background-size: 12px 8px; border: 1px solid #bce0fd;}
+.slt-item select {position: absolute; top: 0; left: 7px; width: 96%; height: 100%; color: #797979; border: none; border-radius: 0; background: transparent; background: -webkit-linear-gradient(transparent, transparent); -webkit-appearance: none;}
+.slt-item select:focus {outline: none;}
+.slt-item select > option {}
+
+/* 인풋파일 스타일링 */
+.input-file {}
+.input-file > input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: none;}
+.input-file > label {position: relative; display: inline-block; width: 100%; color: #212121; cursor: pointer; padding: 14px 14px 14px 14px;}
+/* .input-file > label:before {position: absolute; top: 50%; left: 0; transform: translateY(-50%); content: ''; width: 20px; height: 20px;} */
+/* .input-file > input[type="file"]::placeholder {font-size: 14px; line-height: 1.43; letter-spacing: normal; color: #212121; opacity: 0.3;}
+.input-file > input[type="file"]:focus {outline: none; border-bottom: 1px solid #ffd100;} */
+
+
+/* 스크롤바 스타일링 */
+/* ::-webkit-scrollbar {width: 8px; background: none;}
+::-webkit-scrollbar-thumb {background: #bcbcbc; border-radius: 10px; opacity: .4;}
+::-webkit-scrollbar-track {background: none;} */
+
+/* 모바일 넘버 키패드 인풋 */
+/* input[type=number] {-webkit-text-security: disc;} */
+/* <input type="number" pattern="[0-9]*" inputmode="numeric" placeholder="비밀번호" style="-webkit-text-security:disc"> */
+
+/* 마진 & 패딩 */
+.p-0{padding:0}.p-3{padding:3px}.p-5{padding:5px}.p-10{padding:10px}.p-15{padding:15px}.p-20{padding:20px}.p-25{padding:25px}.p-30{padding:30px}.p-35{padding:35px}.p-40{padding:40px}.p-45{padding:45px}.p-50{padding:50px}.pt-0{padding-top:0}.pt-3{padding-top:3px}.pt-5{padding-top:5px}.pt-10{padding-top:10px}.pt-15{padding-top:15px}.pt-20{padding-top:20px}.pt-25{padding-top:25px}.pt-30{padding-top:30px}.pt-35{padding-top:35px}.pt-40{padding-top:40px}.pt-45{padding-top:45px}.pt-50{padding-top:50px}.pr-0{padding-right:0}.pr-3{padding-right:3px}.pr-5{padding-right:5px}.pr-10{padding-right:10px}.pr-15{padding-right:15px}.pr-20{padding-right:20px}.pr-25{padding-right:25px}.pr-30{padding-right:30px}.pr-35{padding-right:35px}.pr-40{padding-right:40px}.pr-45{padding-right:45px}.pr-50{padding-right:50px}.pb-0{padding-bottom:0}.pb-3{padding-bottom:3px}.pb-5{padding-bottom:5px}.pb-10{padding-bottom:10px}.pb-15{padding-bottom:15px}.pb-20{padding-bottom:20px}.pb-25{padding-bottom:25px}.pb-30{padding-bottom:30px}.pb-35{padding-bottom:35px}.pb-40{padding-bottom:40px}.pb-45{padding-bottom:45px}.pb-50{padding-bottom:50px}.pl-0{padding-left:0}.pl-3{padding-left:3px}.pl-5{padding-left:5px}.pl-10{padding-left:10px}.pl-15{padding-left:15px}.pl-20{padding-left:20px}.pl-25{padding-left:25px}.pl-30{padding-left:30px}.pl-35{padding-left:35px}.pl-40{padding-left:40px}.pl-45{padding-left:45px}.pl-50{padding-left:50px}.m-0{margin:0}.m-3{margin:3px}.m-5{margin:5px}.m-10{margin:10px}.m-15{margin:15px}.m-20{margin:20px}.m-25{margin:25px}.m-30{margin:30px}.m-35{margin:35px}.m-40{margin:40px}.m-45{margin:45px}.m-50{margin:50px}.mt-0{margin-top:0}.mt-3{margin-top:3px}.mt-5{margin-top:5px}.mt-10{margin-top:10px}.mt-15{margin-top:15px}.mt-20{margin-top:20px}.mt-25{margin-top:25px}.mt-30{margin-top:30px}.mt-35{margin-top:35px}.mt-40{margin-top:40px}.mt-45{margin-top:45px}.mt-50{margin-top:50px}.mr-0{margin-right:0}.mr-3{margin-right:3px}.mr-5{margin-right:5px}.mr-10{margin-right:10px}.mr-15{margin-right:15px}.mr-20{margin-right:20px}.mr-25{margin-right:25px}.mr-30{margin-right:30px}.mr-35{margin-right:35px}.mr-40{margin-right:40px}.mr-45{margin-right:45px}.mr-50{margin-right:50px}.mb-0{margin-bottom:0}.mb-3{margin-bottom:3px}.mb-5{margin-bottom:5px}.mb-10{margin-bottom:10px}.mb-15{margin-bottom:15px}.mb-20{margin-bottom:20px}.mb-25{margin-bottom:25px}.mb-30{margin-bottom:30px}.mb-35{margin-bottom:35px}.mb-40{margin-bottom:40px}.mb-45{margin-bottom:45px}.mb-50{margin-bottom:50px}.ml-0{margin-left:0}.ml-3{margin-left:3px}.ml-5{margin-left:5px}.ml-10{margin-left:10px}.ml-15{margin-left:15px}.ml-20{margin-left:20px}.ml-25{margin-left:25px}.ml-30{margin-left:30px}.ml-35{margin-left:35px}.ml-40{margin-left:40px}.ml-45{margin-left:45px}.ml-50{margin-left:50px}
+
+@media screen and (max-width: 768px) {
+    #overlay {top: 185px;}
+}

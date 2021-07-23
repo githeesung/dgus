@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+	
+	<util:properties id="siteinfo" location="classpath:/siteinfo.xml" />
+	
+	
+	<context:component-scan base-package="com.hs">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	
+	
+	<bean id="fileService" class="com.hs.common.service.FileService" /> 
+	
+	<bean id="httpConnectionService" class="com.hs.common.service.HttpConnectionService" />
+	
+	<bean id="JwtService" class="com.hs.app.jwt.service.JwtService" />
+	
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
+    <bean id="userService" class="com.hs.app.user.service.UserService"/>
+	<bean id="userDao" class="com.hs.app.user.dao.UserDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> 
+	</bean> 
+	
+	<bean id="boardService" class="com.hs.app.board.service.BoardService"/>
+	<bean id="boardDao" class="com.hs.app.board.dao.BoardDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> 
+	</bean> 
+	
+	
+	
+</beans>

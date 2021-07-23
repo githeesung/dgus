@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+<mapper namespace="board">	
+	
+	<delete id="deleteProfileInfo" parameterType="java.lang.Integer">
+    	delete from hs_profile_info where idx = #{idx}
+    </delete>
+    <delete id="deleteGuestBook" parameterType="java.lang.Integer">
+    	delete from hs_guest_books where idx = #{idx}
+    </delete>
+	
+	<select id="getProfileByIdx" parameterType="java.lang.Integer" resultType="com.hs.app.board.vo.ProfileInfo">
+		select * from hs_profile_info where idx = #{idx}
+	</select>
+	
+	
+	<select id="getProfileSize" resultType="java.lang.Integer">
+    	select count(*) from hs_profile_info 
+    </select>
+    <select id="getProfileList" parameterType="java.util.Map" resultType="com.hs.app.board.vo.ProfileInfo">
+    	select 
+            *
+        from
+            hs_profile_info 
+        order by
+            idx asc  
+        limit 
+            #{startRow}, #{rowBlockCount}
+    </select>
+	
+	<update id="updateProfileInfo" parameterType="com.hs.app.board.vo.ProfileInfo">
+		update 
+			hs_profile_info
+		set
+			name = #{name},
+			nameEng = #{nameEng},
+			phonenm = #{phonenm},
+			email = #{email},
+			title = #{title},
+			awardList = #{awardList},
+			activeIn = #{activeIn},
+			activeOut = #{activeOut},
+			certificate = #{certificate},
+			img_profile = #{img_profile},
+			
+			img_branding = #{img_branding},
+			video_branding = #{video_branding},
+			txt_branding = #{txt_branding},
+			
+			img_graphic= #{img_graphic},
+			video_graphic = #{video_graphic},
+			txt_graphic = #{txt_graphic},
+			
+			img_poster = #{img_poster},
+			video_poster = #{video_poster},
+			txt_poster = #{txt_poster},
+			
+			img_character = #{img_character},
+			video_character = #{video_character},
+			txt_character = #{txt_character},
+			
+			img_infographic = #{img_infographic},
+			video_infographic = #{video_infographic},
+			txt_infographic = #{txt_infographic},
+			
+			img_edit = #{img_edit},
+			video_edit = #{video_edit},
+			txt_edit = #{txt_edit},
+			
+			img_package = #{img_package},
+			video_package = #{video_package},
+			txt_package = #{txt_package},
+			
+			img_uiux = #{img_uiux},
+			video_uiux = #{video_uiux},
+			txt_uiux = #{txt_uiux},
+			
+			img_kiosk = #{img_kiosk},
+			video_kiosk = #{video_kiosk},
+			txt_kiosk = #{txt_kiosk},
+			
+			img_video = #{img_video},
+			video_video = #{video_video},
+			txt_video = #{txt_video}
+		where
+			idx = #{idx}
+			
+	</update>
+	
+	<insert id="insertProfileInfo" parameterType="com.hs.app.board.vo.ProfileInfo">
+		insert into hs_profile_info 
+			(
+				name, nameEng, phonenm, email, title, awardList, activeIn, activeOut, certificate, img_profile,
+				img_branding, video_branding, txt_branding,
+				img_graphic, video_graphic, txt_graphic,
+				img_poster, video_poster, txt_poster,
+				img_character, video_character, txt_character,
+				img_infographic, video_infographic, txt_infographic,
+				img_edit, video_edit, txt_edit,
+				img_package, video_package, txt_package,
+				img_uiux, video_uiux, txt_uiux,
+				img_kiosk, video_kiosk, txt_kiosk,
+				img_video, video_video, txt_video
+			)
+		values
+			(
+				#{name}, #{nameEng}, #{phonenm}, #{email}, #{title}, #{awardList}, #{activeIn}, #{activeOut}, #{certificate}, #{img_profile},
+				#{img_branding}, #{video_branding}, #{txt_branding},
+				#{img_graphic}, #{video_graphic}, #{txt_graphic},
+				#{img_poster}, #{video_poster}, #{txt_poster},
+				#{img_character}, #{video_character}, #{txt_character},
+				#{img_infographic}, #{video_infographic}, #{txt_infographic},
+				#{img_edit}, #{video_edit}, #{txt_edit},
+				#{img_package}, #{video_package}, #{txt_package},
+				#{img_uiux}, #{video_uiux}, #{txt_uiux},
+				#{img_kiosk}, #{video_kiosk}, #{txt_kiosk},
+				#{img_video}, #{video_video}, #{txt_video}
+			)
+	</insert>
+
+    
+    
+    <select id="getGuestBookSize" resultType="java.lang.Integer">
+    	select count(*) from hs_guest_books 
+    </select>
+    <select id="getGuestBookList" parameterType="java.util.Map" resultType="com.hs.app.board.vo.GuestBook">
+    	select 
+            idx, numb, dept,
+            DATE_FORMAT(regdate, '%Y-%m-%d') as regdate,
+          	toName, fromName, note
+        from
+            hs_guest_books 
+        where true 
+        order by
+            numb desc, dept asc, idx desc 
+        limit 
+            #{startRow}, #{rowBlockCount}
+    </select>
+    
+    
+    <update id="updateGuestBoookNumb" parameterType="com.hs.app.board.vo.GuestBook">
+    	update hs_guest_books set numb = #{numb}, dept = #{dept} where idx = #{idx}
+    </update>
+    
+    <select id="getInsertedGuestBookIdx" parameterType="com.hs.app.board.vo.GuestBook" resultType="com.hs.app.board.vo.GuestBook">
+    	select * from hs_guest_books where toName = #{toName} order by idx desc limit 1
+    </select>
+    
+    <insert id="insertGuestBook" parameterType="com.hs.app.board.vo.GuestBook">
+    	insert into hs_guest_books 
+    		(numb, dept, regdate, toName, fromName, note)
+    	values
+    		(#{numb}, #{dept}, now(), #{toName}, #{fromName}, #{note})
+    </insert>
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+
+        
+    
+    
+</mapper>
